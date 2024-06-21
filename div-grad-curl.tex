@@ -1,0 +1,305 @@
+\documentclass{article}
+\usepackage{gensymb}
+\usepackage{amsmath}
+
+\title{Div Grad Curl Solutions}
+\author{Dan Henriksen}
+
+\begin{document}
+\newcommand{\bb}[1]{\textbf{#1}}
+\newcommand{\ii}[1]{\textit{#1}}
+\maketitle
+
+This is a work in progress. I am using it to learn LaTeX and vector calculus at once.
+
+\section{Introduction, Vector Functions, and Electrostatics}
+\subsection*{Relevant Equations}
+\begin{equation}\tag{Coulomb's Law}
+    \bb{F} = \frac{1}{4 \pi \epsilon_0}\frac{qq_0}{r^2}\hat{\bb{u}}
+\end{equation}
+\begin{equation}\tag{Electric Field}
+    \bb{E}(\bb{r}) = \frac{\bb{F}(\bb{r})}{q_0} = \frac{1}{4 \pi \epsilon_0}\frac{q}{r^2}\hat{\bb{u}}
+\end{equation}
+
+\subsection*{Problems}
+\begin{enumerate}
+    \item TODO
+    \item TODO
+    \item
+    (a) Write a formula for a vector function
+    in two dimensions which is in the positive radial direction
+    and whose magnitude is 1.
+
+    Solution:
+    \[ \vec{F}(x, y) = \frac{x\textbf{i} + y\textbf{j}}
+    {\sqrt{x^2 + y^2}} \]
+    The length of a vector is given by
+    \[ |\vec{v}| =  \sqrt{x^2 + y^2} \]
+    For $\vec{F}$ to be positive in $\vec{r}$, we need
+    $\vec{F}(x,y) = x\textbf{i} + y\textbf{j}$, and we divide
+    by the length of $\vec{F}$ to get a unit vector in that direction.
+    \newline
+    \newline
+    (b) Write a formula for a vector function in two dimensions
+    whose direction makes an angle of 45\degree with the x-axis and whose magnitude
+    at any point (x,y) is $(x + y)^2$.
+
+    Solution:
+
+    $\vec{F}$ must be the same in the $\vec{x}$ and $\vec{y}$ directions
+    to have a 45\degree angle with the x-axis
+    \[ \vec{F}(x, y) = a\textbf{i} + a\textbf{j}\]
+    To have a magnitude of $(x + y)^2$, we need:
+    \[ |\vec{F}| = \sqrt{a^2 + a^2} = (x + y)^2 \]
+    \[ \sqrt{2}a = (x + y)^2 \]
+    \[ a = \frac{\sqrt{2}(x + y)^2}{2} \]
+    \[ => \vec{F}(x,y) = \frac{\sqrt{2}(x+y)^2}{2}(\textbf{i} + \textbf{j}) \]
+
+    (c) Write a formula for a vector function in two dimensions
+    whose direction is tangential [orthogonal to the radial direction] and
+    whose magnitude at any point (x,y) is equal to its distance
+    from the origin.
+
+    Solution:
+
+    To get the function orthogonal to radial, we need the \textbf{i}
+    to depend on -y, and the \textbf{j} to depend on
+    x. So
+    \[ \vec{F}(x,y) = -y\textbf{i} + x\textbf{j} \]
+    The magnitude must be equal to the distance from the origin. The distance
+    is given by $d=\sqrt{x^2+y^2}$, so:
+    \[ |\vec{F}| = \sqrt{a^2+b^2} = \sqrt{x^2+y^2} \]
+    This works with a=y and b=x, with no other changes to the
+    magnitude of $\vec{F}(x,y)$, so:
+    \[ \vec{F}(x,y) = -y\textbf{i} + x\textbf{j} \]
+
+    (d) Write a formula for a vector function in three
+    dimensions which is in the positive radial direction
+    and whose magnitude is 1.
+
+    Solution:
+
+    \[ \vec{F}(x,y,z) = x\textbf{i} + y\textbf{j} + z\textbf{k} \]
+    To get a unit vector (magnitude = 1), divide this by the length:
+    \[ \vec{F}(x,y,z) = \frac{x\textbf{i} + y\textbf{j} + z\textbf{k}}
+    {\sqrt{x^2+y^2+z^2}} \]
+
+    \item An object moves in the xy-plane in such a way that its position
+    vector \bb{r} is given as a function of time \ii{t} by
+    \[ \bb{r} = \bb{i}a\cos{\omega\ii{t}} + \bb{j}b\sin{\omega\ii{t}} \]
+    where \ii{a}, \ii{b}, and $\omega$ are constants.
+
+    (a) How far is the object from the origin at any time \ii{t}?
+
+    Solution:
+    \begin{align*}
+        &d = \sqrt{x^2 + y^2} \\
+        &d = \sqrt{a^2\cos^2{(\omega t)} + b^2\sin^2{(\omega t)}}
+    \end{align*}
+    The important point is that $\cos^2()+\sin^2() = 1$ cannot be factored out.
+
+    (b) Find the object's velocity and acceleration as functions of time.
+
+    Solution:
+    \begin{align*}
+        \vec{v} &= \frac{dx}{dt} \\
+        \vec{v} &= \frac{d}{dt}(\bb{i}a\cos{\omega\ii{t}} + \bb{j}b\sin{\omega\ii{t}}) \\
+        \vec{v} &= -\bb{i}a\omega\sin{\omega t} + \bb{j}b\omega\cos{\omega t}
+    \end{align*}
+    Similarly,
+    \begin{align*}
+        \vec{a} &= \frac{dv}{dt} \\
+        \vec{a} &= \frac{d}{dt}(-\bb{i}a\omega\sin{\omega t} + \bb{j}b\omega\cos{\omega t}) \\
+        \vec{a} &= -\bb{i}a\omega^2\cos{\omega t} - \bb{j}b\omega^2\sin{\omega t} \\
+    \end{align*}
+    Using the definition of \bb{r}, the last line can also be written:
+    \[ \vec{a} = -\omega^2\bb{r} \]
+
+    (c) Show that the object moves on the elliptical path
+    \[ {\left(\frac{x}{a}\right)}^2 + {\left(\frac{y}{b}\right)}^2 = 1\]
+
+    Solution:
+
+    The x- and y- coordinates of the object are given by:
+    \[ x = a\cos{\omega t} \quad  y = b\sin{\omega t} \]
+    If we plug these into the left hand side of the ellipse equation, we get:
+    \begin{align*}
+        {\left(\frac{x}{a}\right)}^2 + {\left(\frac{y}{b}\right)}^2 &= {\left(\frac{a^2\cos^2{\omega t}}{a^2} \right)} + {\left(\frac{b^2\sin^2{\omega t}}{b^2} \right)} \\
+        {\left(\frac{x}{a}\right)}^2 + {\left(\frac{y}{b}\right)}^2 &= 1
+    \end{align*}
+    since the constants a and b cancel, and using $\cos^2() + \sin^2() = 1$.
+
+    \item A charge +1 is situated at the point (1, 0, 0) and a charge -1 is
+    situated at the point (-1, 0, 0). Find the electric field of these two charges
+    at an arbitrary point (0, y, 0) on the y-axis.
+
+    Solution:
+
+    An electric field is given by:
+    \[ \bb{E}(\bb{r}) = \frac{1}{4\pi\epsilon_0}\sum_{l=1}^{N}\frac{q_l}{|\bb{r}-\bb{r}_l|^2} \hat{\bb{u}_l} \]
+    We have two charges at (1,0,0) and (-1,0,0). The y-components will cancel out, and the
+    x-components will reinforce one another. So we need to find the x-component of each
+    charge and add them. For the charge at (1,0,0):
+    \begin{align*}
+        E_x &= -\frac{1}{4 \pi \epsilon_0} \frac{\cos{\theta}}{r^2} \\
+    % TODO - insert image showing coordinates
+        \cos{\theta} &= \frac{adj}{hyp} = \frac{x}{r} = \frac{1}{r} \\
+        r &= \sqrt{1 + y^2} \\
+        => E_x &= -\frac{1}{4 \pi \epsilon_0} \frac{1}{(1+y^2)^\frac{3}{2}} \\
+    \end{align*}
+    The field from the charge at (-1,0,0) is the same in the x-direction. Adding them together:
+    \[ E = -\frac{1}{2 \pi \epsilon_0} \frac{1}{(1+y^2)^\frac{3}{2}} \bb{i} \]
+
+    \item Instead of using arrows to represent vector functions, we sometimes use families
+    of curves called \ii{field lines}. A curve y = y(x) is a field line of the vector
+    function \bb{F}(x,y) if at each point $(x_0, y_0)$ on the curve $\bb{F}(x_0, y_0)$
+    is tangent to the curve (see the figure). % TODO - add figure
+
+    (a) Show that the field lines y = y(x) of a vector function
+    \[ \bb{F}(x,y) = \bb{i}F_x(x,y) + \bb{j}F_y(x,y) \]
+    are solutions to the differential equation
+    \[ \frac{dy}{dx} = \frac{F_y(x,y)}{F_x(x,y)} \]
+
+    Solution:
+
+    The field lines are tangent to the vector function. The tangent is the derivative of
+    F, which is given by $\frac{dy}{dx}$. $F_y$ and $F_x$ are the components of F. The
+    slope at any point is given by $\frac{F_y}{F_x}$. The slope is the same as the tangent,
+    so
+    \[ \frac{dy}{dx} = \frac{F_y(x,y)}{F_x(x,y)} \]
+
+    (b) Determine the field lines of each of the functions of Problem I-1. Draw the
+    field lines and compare with the arrow diagrams of Problem I-1.
+
+    Solution:
+
+    We can use the relationship derived in (a) to determine the differential equations
+    we need to solve to get the field lines.
+
+    (i) $\bb{i}y + \bb{j}x$
+    \[ \frac{dy}{dx} = \frac{F_y}{F_x} = \frac{x}{y} \]
+    This is a separable differential equation.
+    \begin{align*}
+        y' &= \frac{x}{y} \\
+        ydy &= xdx \\
+        \int{ydy} &= \int{xdx} \\
+        y^2 &= x^2 + c
+    \end{align*}
+
+    (ii) $(\bb{i} + \bb{j})/\sqrt{2}$
+    \begin{align*}
+        \frac{dy}{dx} &= \frac{\sqrt{2}}{\sqrt{2}} = 1 \\
+        \int{dy} &= \int{dx} \\
+        y &= x + c
+    \end{align*}
+    (iii) $\bb{i}x - \bb{j}y$
+    \begin{align*}
+        \frac{dy}{dx} &= \frac{-y}{x} \\
+        \int{\frac{-dy}{y}} &= \int{\frac{dx}{x}} \\
+        -\ln{y} &= \ln{x} + c \\
+        c &= \ln{x} + \ln{y} = \ln(xy) \\
+        c &= xy
+    \end{align*}
+    (iv) \bb{i}y
+    \begin{align*}
+        \frac{dy}{dx} &= \frac{0}{y} = 0 \\
+        \int{dy} &= 0 \\
+        y &= c
+    \end{align*}
+    (v) \bb{j}x
+    \begin{align*}
+        \frac{dy}{dx} &= \frac{0}{0} = undefined \\
+        \frac{dx}{dy} &= \frac{0}{x} = 0 \\
+        x &= c
+    \end{align*}
+    (vi) $(\bb{i}y + \bb{j}x)/\sqrt{x^2 + y^2}, (x,y)\neq(0,0)$
+    \begin{align*}
+        \frac{dy}{dx} &= \frac{x}{\sqrt{x^2 + y^2}}\frac{\sqrt{x^2 + y^2}}{y} = \frac{x}{y} \\
+        \int{ydy} &= \int{xdx} \\
+        y^2 - x^2 &= c
+    \end{align*}
+    (vii) \bb{i}y + \bb{j}xy
+    \begin{align*}
+        \frac{dy}{dx} &= \frac{xy}{y} = x \\
+        \int{dy} &= \int{xdx} \\
+        y &= \frac{x^2}{2} + c
+    \end{align*}
+    (viii) \bb{i} + \bb{j}y
+    \begin{align*}
+        \frac{dy}{dx} &= y \\
+        \int{\frac{dy}{y}} &= \int{dx} \\
+        \ln{y} &= x + c \\
+        y &= e^x + c
+    \end{align*}
+
+\end{enumerate}
+
+\section{Surface Integrals and the Divergence}
+\subsection*{Relevant Equations}
+\begin{equation}\tag{Gauss's Law}
+    \int\int_S \bb{E} \cdot \hat{\bb{n}} dS = \frac{q}{\epsilon_0}
+\end{equation}
+
+\subsection*{Examples}
+\begin{itemize}
+    \item (Page 25) Solution to double integral
+    % TODO - insert graphic
+    \[ \sqrt{3}\int\int_R (1-y) dxdy \]
+    with $S = z = f(x,y) = 1-x-y$.
+
+    The region R is the triangle in the positive region of the xy-plane
+    delimited by the two axes and the line $y = 1-x$.
+
+    Putting the right limits in the double integral we get:
+    \begin{align*}
+    \sqrt{3}\int\int_R (1-y) dxdy &= \sqrt{3}\int_0^1\int_0^{1-y} (1-y) dxdy \\
+    &= \sqrt{3}\int_0^1 (1-y)x \big|_0^{1-y} dy \\
+    &= \sqrt{3}\int_0^1 (1-y)^2 dy \\
+    &= \sqrt{3}\int_0^1 (1-2y-y^2) dy \\
+    &= \sqrt{3}(y-y^2-\frac{y^3}{3}) \big|_0^1 \\
+    &= \sqrt{3}(1-1-\frac{1}{3}) \\
+    &= \frac{1}{\sqrt{3}}
+    \end{align*}
+
+    \item (Page 27) Solution to the double integral
+    \[ \int\int_S z^2dS = \int\int_R \sqrt{1-x^2-y^2}dxdy\]
+    with $S = x^2+y^2+z^2 = 1$, and R is the projection of S
+    in the positive region of the xy-plane.
+
+    R is a quarter circle defined by $x^2+y^2=1$. Converting to
+    polar coordinates, R is the region from $r = [0,1]$ and
+    $\theta = [0, \frac{\pi}{2}]$.
+    \begin{align*}
+        \int\int_S z^2dS &= \int\int_R \sqrt{1-x^2-y^2}dxdy \\
+        &= \int_0^\frac{\pi}{2}\int_0^1 (\sqrt{1-r^2\cos^2\theta-r^2\sin^2\theta})rdrd\theta \\
+        &= \int_0^\frac{\pi}{2}\int_0^1 r\sqrt{1-r^2}drd\theta \\
+    \end{align*}
+    let $u = \sqrt{1-r^2}$, then
+    \[ du = \frac{1}{2\sqrt{1-r^2}}2rdr = \frac{rdr}{\sqrt{1-r^2}} = \frac{rdr}{u} \]
+    \[ => rdr = udu \]
+    After converting the limits of the definite integral in r to limits in u, we have
+    \begin{align*}
+        \int\int_S z^2dS &= \int_0^\frac{\pi}{2}\int_1^0 u^2dud\theta \\
+        &= \int_0^\frac{\pi}{2} \frac{u^3}{3} \bigg|_{1}^{0} d\theta \\
+        &= \frac{1}{3} \int_0^\frac{\pi}{2}d\theta \\
+        &= \frac{\pi}{6} \\
+    \end{align*}
+
+    \item (Page 29) Solution to the double integral
+    \[ \int\int_S \bb{F}\cdot\hat{\bb{n}}dS = \int\int_R \left( \frac{3x}{4} - \frac{3y}{2} + \frac{1}{2} \right) dxdy \]
+    where $S = x + 2y + 2z = 2$, and R is the area in the positve region of the xy-plane
+    with $y = 1 - x/2$.
+    \begin{align*}
+        \int\int_S \bb{F}\cdot\hat{\bb{n}}dS &= \int_0^1\int_0^{2-2y} \left( \frac{3x}{4} - \frac{3y}{2} + \frac{1}{2} \right) dxdy \\
+        &= \int_0^1\left( \frac{3x^2}{8} - \frac{3yx}{2} + \frac{x}{2} \right) \bigg|_0^{2-2y} dy \\
+        &= \int_0^1\left( \frac{3(2-2y)^2}{8} - \frac{3y(2-2y)}{2} + \frac{2-2y}{2} \right) dy \\
+        &= \int_0^1\left( \frac{12-24y+12y^2}{8} + \frac{-6y+6y^2}{2} + \frac{2-2y}{2} \right) dy \\
+        &= \int_0^1\left( \frac{12-24y+12y^2}{8} + \frac{2-8y+6y^2}{2} \right) dy \\
+        &= \int_0^1\left( \frac{6-12y+6y^2}{4} + \frac{4-16y+12y^2}{4} \right) dy \\
+        &= \int_0^1\left( \frac{10-28y+18y^2}{4} \right) dy \\
+        &= \frac{1}{4} \left( 10y-14y^2+6y^3 \right) \big|_0^1
+        = \frac{1}{2} \\
+    \end{align*}
+\end{itemize}
+
+\end{document}
