@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{gensymb}
 \usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
 
 \title{Div Grad Curl Solutions}
 \author{Dan Henriksen}
@@ -53,7 +54,7 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
     \[ |\vec{F}| = \sqrt{a^2 + a^2} = (x + y)^2 \]
     \[ \sqrt{2}a = (x + y)^2 \]
     \[ a = \frac{\sqrt{2}(x + y)^2}{2} \]
-    \[ => \vec{F}(x,y) = \frac{\sqrt{2}(x+y)^2}{2}(\textbf{i} + \textbf{j}) \]
+    \[ \Rightarrow \vec{F}(x,y) = \frac{\sqrt{2}(x+y)^2}{2}(\textbf{i} + \textbf{j}) \]
 
     (c) Write a formula for a vector function in two dimensions
     whose direction is tangential [orthogonal to the radial direction] and
@@ -145,7 +146,7 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
     % TODO - insert image showing coordinates
         \cos{\theta} &= \frac{adj}{hyp} = \frac{x}{r} = \frac{1}{r} \\
         r &= \sqrt{1 + y^2} \\
-        => E_x &= -\frac{1}{4 \pi \epsilon_0} \frac{1}{(1+y^2)^\frac{3}{2}} \\
+        \Rightarrow E_x &= -\frac{1}{4 \pi \epsilon_0} \frac{1}{(1+y^2)^\frac{3}{2}} \\
     \end{align*}
     The field from the charge at (-1,0,0) is the same in the x-direction. Adding them together:
     \[ E = -\frac{1}{2 \pi \epsilon_0} \frac{1}{(1+y^2)^\frac{3}{2}} \bb{i} \]
@@ -236,9 +237,14 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
 
 \section{Surface Integrals and the Divergence}
 \subsection*{Relevant Equations}
-\begin{equation}\tag{Gauss's Law}
-    \int\int_S \bb{E} \cdot \hat{\bb{n}} dS = \frac{q}{\epsilon_0}
-\end{equation}
+% \begin{align*}
+    \begin{equation}\tag{Gauss's Law}
+        \int\int_S \bb{E} \cdot \hat{\bb{n}} dS = \frac{q}{\epsilon_0}
+    \end{equation}
+    \begin{equation}\tag{Gauss's Law Differential Form}
+        \textnormal{div} \bb{E} = \nabla \cdot \bb{E} = \frac{\partial{E_x}}{\partial{x}} + \frac{\partial{E_y}}{\partial{y}} + \frac{\partial{E_z}}{\partial{z}} = \frac{\rho}{\epsilon_0}
+    \end{equation}
+% \end{align*}
 
 \subsection*{Examples}
 \begin{itemize}
@@ -276,7 +282,7 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
     \end{align*}
     let $u = \sqrt{1-r^2}$, then
     \[ du = \frac{1}{2\sqrt{1-r^2}}2rdr = \frac{rdr}{\sqrt{1-r^2}} = \frac{rdr}{u} \]
-    \[ => rdr = udu \]
+    \[ \Rightarrow rdr = udu \]
     After converting the limits of the definite integral in r to limits in u, we have
     \begin{align*}
         \int\int_S z^2dS &= \int_0^\frac{\pi}{2}\int_1^0 u^2dud\theta \\
@@ -297,9 +303,79 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
         &= \int_0^1\left( \frac{12-24y+12y^2}{8} + \frac{2-8y+6y^2}{2} \right) dy \\
         &= \int_0^1\left( \frac{6-12y+6y^2}{4} + \frac{4-16y+12y^2}{4} \right) dy \\
         &= \int_0^1\left( \frac{10-28y+18y^2}{4} \right) dy \\
-        &= \frac{1}{4} \left( 10y-14y^2+6y^3 \right) \big|_0^1
-        = \frac{1}{2} \\
+        &= \frac{1}{4} \left( 10y-14y^2+6y^3 \right) \big|_0^1 \\
+        &= \frac{1}{2} \\
     \end{align*}
 \end{itemize}
+
+\subsection*{Problems}
+\begin{enumerate}
+    \item Find a unit vector $\hat{n}$ normal to each of the following surfaces.
+
+    (a) $z = 2 - x - y$
+
+    Solution:
+
+    We can use the result derived in equation II-4:
+    \[ \hat{\bb{n}}(x,y,z) = \frac{\bb{u} \times \bb{v}}{|\bb{u} \times \bb{v}|} = \frac{-\bb{i}\frac{\partial{f}}{\partial{x}} -\bb{j}\frac{\partial{f}}{\partial{y}} + \bb{k}} {\sqrt{1 + (\frac{\partial{f}}{\partial{x}})^2 + (\frac{\partial{f}}{\partial{y}})^2 }} \]
+    The partial derivatives are:
+    \[ \frac{\partial{f}}{\partial{x}} = -1 \quad \textnormal{and} \quad \frac{\partial{f}}{\partial{y}} = -1 \]
+    Then:
+    \begin{align*}
+        \hat{\bb{n}} &= \frac{-\bb{i}(-1) -\bb{j}(-1) + \bb{k}} {\sqrt{1 + (-1)^2 + (-1)^2 }} \\
+        &= \frac{\bb{i} + \bb{j} + \bb{k}}{\sqrt{3}}
+    \end{align*}
+
+    (b) $z = (x^2 + y^2)^\frac{1}{2}$
+
+    Solution:
+    \[ \frac{\partial{f}}{\partial{x}} = \frac{x}{(x^2 + y^2)^\frac{1}{2}} \quad \textnormal{and} \quad \frac{\partial{f}}{\partial{y}} = \frac{y}{(x^2 + y^2)^\frac{1}{2}} \]
+    \begin{align*}
+        \hat{\bb{n}} &= \frac{-\bb{i}(\frac{x}{{(x^2 + y^2)}^\frac{1}{2}}) -\bb{j}(\frac{y}{(x^2 + y^2)^\frac{1}{2}}) + \bb{k}} {\sqrt{1 + \left( \frac{x}{(x^2 + y^2)^\frac{1}{2}} \right)^2 + \left( \frac{y}{(x^2 + y^2)^\frac{1}{2}} \right)^2 }} \\
+        &= \frac{-\bb{i}(\frac{x}{z}) -\bb{j}(\frac{y}{z}) + \bb{k}} {\sqrt{1 + \frac{x^2}{z^2} + \frac{y^2}{z^2} }} \\
+        &= \frac{-x\bb{i} -y\bb{j} + z\bb{k}} {z\sqrt{1 + \frac{x^2}{z^2} + \frac{y^2}{z^2} }} \\
+        &= \frac{-x\bb{i} -y\bb{j} + z\bb{k}} {\sqrt{z^2 + x^2 + y^2}} \\
+        &= \frac{-x\bb{i} -y\bb{j} + z\bb{k}} {\sqrt{z^2 + z^2}} \\
+        &= \frac{-x\bb{i} -y\bb{j} + z\bb{k}} {z\sqrt{2}} \\
+    \end{align*}
+
+    (c) $z = (1-x^2)^\frac{1}{2}$
+
+    Solution:
+    \[ \frac{\partial{f}}{\partial{x}} = \frac{-x}{{(1 - x^2)}^\frac{1}{2}} = \frac{-x}{z} \quad \textnormal{and} \quad \frac{\partial{f}}{\partial{y}} = 0 \]
+    \begin{align*}
+        \hat{\bb{n}} &= \frac{-\bb{i} \left( \frac{-x}{z} \right) -\bb{j}(0) + \bb{k}} {\sqrt{1 + {\left( \frac{-x}{z} \right)}^2 + {(0)}^2 }} \\
+        &= \frac{x\bb{i} + z\bb{k}} {z\sqrt{1 + { \frac{x^2}{z^2} } }} \\
+        &= \frac{x\bb{i} + z\bb{k}} {\sqrt{z^2 + x^2 }} \\
+        &= \frac{x\bb{i} + z\bb{k}} {\sqrt{((1-x^2)^\frac{1}{2})^2 + x^2 }} \\
+        &= \frac{x\bb{i} + z\bb{k}} {\sqrt{1-x^2 + x^2 }} \\
+        &= x\bb{i} + z\bb{k}
+    \end{align*}
+
+    (d) $z = x^2 + y^2$
+
+    Solution:
+    \[ \frac{\partial{f}}{\partial{x}} = 2x \quad \textnormal{and} \quad \frac{\partial{f}}{\partial{y}} = 2y \]
+    \begin{align*}
+        \hat{\bb{n}}(x,y,z) &= \frac{-\bb{i}2x -\bb{j}2y + \bb{k}} {\sqrt{1 + (2x)^2 + (2y)^2 }} \\
+        &= \frac{-\bb{i}2x -\bb{j}2y + \bb{k}} {\sqrt{1 + 4x^2 + 4y^2}} \\
+        &= \frac{-\bb{i}2x -\bb{j}2y + \bb{k}} {\sqrt{1 + 4z}} \\
+    \end{align*}
+
+    (e) $z = {\left( 1 - \frac{x^2}{a^2} - \frac{y^2}{a^2} \right)}^\frac{1}{2}$
+
+    Solution:
+    \[ \frac{\partial{f}}{\partial{x}} = \frac{-x}{a^2z} \quad \textnormal{and} \quad \frac{\partial{f}}{\partial{y}} = \frac{-y}{a^2z} \]
+    \begin{align*}
+        \hat{\bb{n}}(x,y,z) &= \frac{-\bb{i}\frac{-x}{a^2z} -\bb{j}\frac{-y}{a^2z} + \bb{k}} {\sqrt{1 + (\frac{-x}{a^2z})^2 + (\frac{-y}{a^2z})^2 }} \\
+        &= \frac{\bb{i}x + \bb{j}y + \bb{k}a^2z} {a^2z\sqrt{1 + \frac{x^2}{a^4z^2} + \frac{y^2}{a^4z^2} }} \\
+        &= \frac{\bb{i}x + \bb{j}y + \bb{k}a^2z} {a\sqrt{a^2z^2 + x^2/a^2 + y^2/a^2 }} \\
+        &= \frac{\bb{i}x + \bb{j}y + \bb{k}a^2z} {a\sqrt{a^2z^2 + 1 - 1 + x^2/a^2 + y^2/a^2 }} \\
+        &= \frac{\bb{i}x + \bb{j}y + \bb{k}a^2z} {a\sqrt{a^2z^2 + 1 - (1 - x^2/a^2 - y^2/a^2) }} \\
+        &= \frac{\bb{i}x + \bb{j}y + \bb{k}a^2z} {a\sqrt{a^2z^2 + 1 - z^2 }} \\
+        &= \frac{\bb{i}x + \bb{j}y + \bb{k}a^2z} {a\sqrt{1 + (a^2 - 1)z^2 }} \\
+    \end{align*}
+
+\end{enumerate}
 
 \end{document}
