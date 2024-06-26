@@ -2,6 +2,8 @@
 \usepackage{gensymb}
 \usepackage{amsmath}
 \usepackage[margin=1in]{geometry}
+\usepackage{cancel}
+
 
 \title{Div Grad Curl Solutions}
 \author{Dan Henriksen}
@@ -9,6 +11,10 @@
 \begin{document}
 \newcommand{\bb}[1]{\textbf{#1}}
 \newcommand{\ii}[1]{\textit{#1}}
+% partial derivative:
+\newcommand{\pd}[2][f]{\frac{\partial{#1}}{\partial{#2}}}
+% unit vector normal to a plane:
+\newcommand{\nhat}[2]{\hat{\bb{n}} &= \frac{-\bb{i} \left( {#1} \right) -\bb{j} \left( {#2} \right) + \bb{k}} {\sqrt{1 + ({#1})^2 + ({#2})^2 }}}
 \maketitle
 
 This is a work in progress. I am using it to learn LaTeX and vector calculus at once.
@@ -125,10 +131,10 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
     \[ x = a\cos{\omega t} \quad  y = b\sin{\omega t} \]
     If we plug these into the left hand side of the ellipse equation, we get:
     \begin{align*}
-        {\left(\frac{x}{a}\right)}^2 + {\left(\frac{y}{b}\right)}^2 &= {\left(\frac{a^2\cos^2{\omega t}}{a^2} \right)} + {\left(\frac{b^2\sin^2{\omega t}}{b^2} \right)} \\
+        {\left(\frac{x}{a}\right)}^2 + {\left(\frac{y}{b}\right)}^2 &= {\left(\frac{\cancel{a^2}\cos^2{\omega t}}{\cancel{a^2}} \right)} + {\left(\frac{\cancel{b^2}\sin^2{\omega t}}{\cancel{b^2}} \right)} \\
         {\left(\frac{x}{a}\right)}^2 + {\left(\frac{y}{b}\right)}^2 &= 1
     \end{align*}
-    since the constants a and b cancel, and using $\cos^2() + \sin^2() = 1$.
+    since $\cos^2() + \sin^2() = 1$.
 
     \item A charge +1 is situated at the point (1, 0, 0) and a charge -1 is
     situated at the point (-1, 0, 0). Find the electric field of these two charges
@@ -238,6 +244,9 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
 \section{Surface Integrals and the Divergence}
 \subsection*{Relevant Equations}
 % \begin{align*}
+    \begin{equation}\tag{II-4}
+        \hat{\bb{n}}(x,y,z) = \frac{\bb{u} \times \bb{v}}{|\bb{u} \times \bb{v}|} = \frac{-\bb{i}\frac{\partial{f}}{\partial{x}} -\bb{j}\frac{\partial{f}}{\partial{y}} + \bb{k}} {\sqrt{1 + (\frac{\partial{f}}{\partial{x}})^2 + (\frac{\partial{f}}{\partial{y}})^2 }}
+    \end{equation}
     \begin{equation}\tag{Gauss's Law}
         \int\int_S \bb{E} \cdot \hat{\bb{n}} dS = \frac{q}{\epsilon_0}
     \end{equation}
@@ -312,7 +321,7 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
 \begin{enumerate}
     \item Find a unit vector $\hat{n}$ normal to each of the following surfaces.
 
-    (a) $z = 2 - x - y$
+    (a) $z = f(x,y) = 2 - x - y$
 
     Solution:
 
@@ -375,6 +384,80 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
         &= \frac{\bb{i}x + \bb{j}y + \bb{k}a^2z} {a\sqrt{a^2z^2 + 1 - z^2 }} \\
         &= \frac{\bb{i}x + \bb{j}y + \bb{k}a^2z} {a\sqrt{1 + (a^2 - 1)z^2 }} \\
     \end{align*}
+
+    \item (a) Show that the unit vector normal to the plane
+    \[ ax + by + cz = d \]
+    is given by
+    \[ \hat{\bb{n}} = \pm (\bb{i}a +\bb{b} + \bb{c})/(a^2 + b^2 + c^2)^\frac{1}{2}\]
+
+    % Defined \pd partial derivative command; TODO - go back and replace before this.
+    Solution:
+    \[ z = f(x,y) = d/c - ax/c - by/c \]
+    \[ \pd{x} = -a/c \quad and \quad \pd{y} = -b/c \]
+    \begin{align*}
+        \nhat{-a/c}{-b/c} \\
+        &= \frac{\bb{i}(a/c) + \bb{j}(b/c) + \bb{k}}{\sqrt{1 + a^2/c^2 + b^2/c^2}} \\
+        &= \frac{\bb{i}a + \bb{j}b + \bb{k}c}{c\sqrt{1 + a^2/c^2 + b^2/c^2}} \\
+        &= \frac{\bb{i}a + \bb{j}b + \bb{k}c}{\sqrt{c^2 + a^2 + b^2}} \\
+    \end{align*}
+
+    (b) Explain in geometric terms why this expression for $\hat{\bb{n}}$
+    is independent of the constant \ii{d}.
+
+    Solution:
+
+    $\hat{\bb{n}}$ being independent of \ii{d} reflects the fact that there are
+    infinitely many parallel planes that this vector is the normal unit vector
+    to.
+
+    \item Derive the expressions for the unit normal vector for surfaces
+    given by $y=g(x,z)$ and by $x=h(y,z)$. Use each to rederive the expression
+    for the normal to the plane given in Problem II-2.
+
+    Solution:
+
+    For the surface described by $y=g(x,z)$, we need two vectors \bb{u} and
+    \bb{v} tangent to the surface. To get the first vector, hold z constant,
+    and slice the surface with a plane parallel to the xy-plane. This plane
+    intersects the surface S on a curve. For a point on that curve, the vector
+    \bb{u} tangent to the point, the slope $m = \frac{u_y}{u_x}$. The total
+    derivative of the surface at this point is
+    \[ dg = \pd[g]{x}dx + \pd[g]{z}dz \]
+    On the plane we have used to slice through S, z is fixed, so $dz = 0$:
+    \[ dg = \pd[g]{x}dx \quad \Rightarrow \quad \frac{dg}{dx} = \pd[g]{x} \]
+    The derivative is the slope of the line tanget to the point, so:
+    \[ \frac{u_y}{u_x} = \pd[g]{x} \]
+    \[ u_y = \left( \pd[g]{x} \right)u_x \]
+    Thus
+    \[ \bb{u} = \bb{i}u_x + \bb{j}\left( \pd[g]{x} \right)u_x = \left[ \bb{i} + \bb{j}\left( \pd[g]{x} \right) \right]u_x \]
+
+    For the other vector \bb{v}, hold x fixed and allow z to vary so that
+    we slice S with a plane parallel to the yz-plane. Using similar reasoning,
+    the slope of \bb{v} tangent to the intersecting curve of S and the slicing
+    plane is:
+    \[ m = \frac{v_y}{v_z} = \pd[g]{z}\]
+    \[ \Rightarrow v_y = \left( \pd[g]{z} \right)v_z \]
+    Thus
+    \[ \bb{v} = \bb{j}\left( \pd[g]{z} \right)v_z + \bb{k}v_z = \left[ \bb{j}\left( \pd[g]{z} \right) + \bb{k}\right]v_z \]
+
+    The unit normal vector is defined as:
+    % \[ \hat{\bb{n}}(x,y,z) = \frac{\bb{u} \times \bb{v}}{|\bb{u} \times \bb{v}|} = \frac{-\bb{i}\frac{\partial{f}}{\partial{x}} -\bb{j}\frac{\partial{f}}{\partial{y}} + \bb{k}} {\sqrt{1 + (\frac{\partial{f}}{\partial{x}})^2 + (\frac{\partial{f}}{\partial{y}})^2 }} \]
+    \[ \hat{\bb{n}}(x,y,z) = \frac{\bb{u} \times \bb{v}}{|\bb{u} \times \bb{v}|} \]
+    Then,
+    \begin{align*}
+        \bb{u} \times \bb{v} &= \bb{i}({{u_z}v_y - u_y}v_z) + \bb{j}({u_x}v_z - {u_z}v_x) + \bb{k}({u_y}v_x - {u_x}v_y) \\
+        \bb{u} \times \bb{v} &= \bb{i}\left({(0)\pd[g]{z}v_z - \pd[g]{x}u_x}v_z \right) + \bb{j}\left({u_x}v_z - (0)(0)\right) + \bb{k}\left(\pd[g]{x}u_x(0) - {u_x}\pd[g]{z}v_z \right) \\
+        \bb{u} \times \bb{v} &= -\bb{i}({\pd[g]{x}u_x}v_z) + \bb{j}({u_x}v_z) - \bb{k}({u_x}\pd[g]{z}v_z) \\
+        \bb{u} \times \bb{v} &= \left[ -\bb{i}{\pd[g]{x}} + \bb{j} - \bb{k}\pd[g]{z} \right]{u_x}v_z \\
+        |\bb{u} \times \bb{v}| &= \sqrt{{u_x^2}v_z^2\left[ \left(\pd[g]{x}\right)^2 + 1 + \left(\pd[g]{z}\right)^2 \right]} \\
+    \end{align*}
+    \[ \Rightarrow \hat{\bb{n}} = \frac{-\bb{i}{\pd[g]{x}} + \bb{j} - \bb{k}\pd[g]{z}}{\sqrt{1 + \left(\pd[g]{x}\right)^2 + \left(\pd[g]{z}\right)^2 }} \quad \textnormal{for} \quad y=g(x,z) \]
+
+    The derivation for $x = h(y,z)$ is similar, and the result is:
+    \[ \hat{\bb{n}} = \frac{-\bb{i}{\pd[h]{y}} + \bb{j} - \bb{k}\pd[h]{z}}{\sqrt{1 + \left(\pd[h]{y}\right)^2 + \left(\pd[h]{z}\right)^2 }} \quad \textnormal{for} \quad x=h(y,z) \]
+
+    \item In each of the following use Equation II-12 to evaluate the surface integral
+    $\int\int_SG(x,y,z)dS$
 
 \end{enumerate}
 
