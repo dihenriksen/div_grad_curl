@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{gensymb}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage[margin=1in]{geometry}
 \usepackage{cancel}
 
@@ -9,7 +10,9 @@
 \author{Dan Henriksen}
 
 \begin{document}
+% bold
 \newcommand{\bb}[1]{\textbf{#1}}
+% italics
 \newcommand{\ii}[1]{\textit{#1}}
 % partial derivative:
 \newcommand{\pd}[2][f]{\frac{\partial{#1}}{\partial{#2}}}
@@ -17,6 +20,8 @@
 \newcommand{\nhat}[2]{\hat{\bb{n}} &= \frac{-\bb{i} \left( {#1} \right) -\bb{j} \left( {#2} \right) + \bb{k}} {\sqrt{1 + ({#1})^2 + ({#2})^2 }}}
 % vector
 \newcommand{\vvec}[3]{\bb{i}{#1} + \bb{j}{#2} + \bb{k}{#3}}
+% unit vector, bold hat
+\newcommand{\bh}[1]{\hat{\bb{#1}}}
 \maketitle
 
 This is a work in progress. I am using it to learn LaTeX and vector calculus at once.
@@ -247,10 +252,11 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
 \subsection*{Relevant Equations}
 \begin{align*}
     &\hat{\bb{n}}(x,y,z) = \frac{\bb{u} \times \bb{v}}{|\bb{u} \times \bb{v}|} = \frac{-\bb{i}\frac{\partial{f}}{\partial{x}} -\bb{j}\frac{\partial{f}}{\partial{y}} + \bb{k}} {\sqrt{1 + (\frac{\partial{f}}{\partial{x}})^2 + (\frac{\partial{f}}{\partial{y}})^2 }} \tag{II-4} \\
-    &\iint_S{G(x,y,z)}dS = \int\int_R{G(x,y,f(x,y))} \cdot \sqrt{1 + {\left( \pd{x} \right)}^2 + {\left( \pd{y} \right)}^2}dxdy \tag{II-12} \\
-    &\iint_S \bb{F} \cdot \hat{\bb{n}} dS = \int\int_R \left\{ -F_x[x,y,f(x,y)]\pd{x} - F_y[x,y,f(x,y)]\pd{y} + F_z[x,y,f(x,y)] \right\} dxdy \tag{II-13}\label{II-13} \\
+    &\iint_S{G(x,y,z)}dS = \iint_R{G(x,y,f(x,y))} \cdot \sqrt{1 + {\left( \pd{x} \right)}^2 + {\left( \pd{y} \right)}^2}dxdy \tag{II-12} \\
+    &\iint_S \bb{F} \cdot \hat{\bb{n}} dS = \iint_R \left\{ -F_x[x,y,f(x,y)]\pd{x} - F_y[x,y,f(x,y)]\pd{y} + F_z[x,y,f(x,y)] \right\} dxdy \tag{II-13}\label{II-13} \\
     &\iint_S \bb{E} \cdot \hat{\bb{n}} dS = \frac{q}{\epsilon_0} \tag{Gauss's Law}\label{Gauss} \\
     &\textnormal{div} \bb{E} = \nabla \cdot \bb{E} = \frac{\partial{E_x}}{\partial{x}} + \frac{\partial{E_y}}{\partial{y}} + \frac{\partial{E_z}}{\partial{z}} = \frac{\rho}{\epsilon_0} \tag{Gauss's Law Differential Form} \\
+    &\iint_S \bb{F} \cdot \bh{n} dS = \iiint_V \nabla \cdot \bb{F} dV \tag{Divergence Theorem} \\
 \end{align*}
 
 \subsection*{Examples}
@@ -833,6 +839,409 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
     \[ q = q_{S_1} + q_{S_2} + q_{S_3} + q_{S_4}\]
     \[ q = 0 + \frac{\lambda h r^2 \pi \epsilon_0}{4} + \frac{\lambda h r^2 \pi \epsilon_0}{4} + h \lambda \frac{\pi r^2}{2} \epsilon_0 \]
     \[ q = \lambda h r^2 \pi \epsilon_0 \]
+
+    \item It sometimes happens that surface integrals can be evaluated without using the long-winded procedures outlined in the text.
+    Try evaluating $\iint_S \bb{F} \cdot \hat{\bb{n}} dS$ for each of the following; think a bit and avoid a lot of work!
+
+    (a) $\bb{F} = \vvec{x}{y}{z}$. S, the three squares each of side b as shown in the figure (in the xz-plane, xy-plane, and yz-plane).
+
+    Solution:
+
+    On the square on the xy-plane, $z=0$, and $\hat{\bb{n}} = -\hat{\bb{k}}$. Thus:
+    \[ \bb{F} \cdot \bb{n} = F_z = z = 0 \]
+    It is a similar result for each of the other faces. In the xz-plane:
+    \[ y = 0 \quad \hat{\bb{n}} = -\hat{\bb{y}} \]
+    \[ \bb{F} \cdot \bb{n} = F_y = y = 0 \]
+    In the yz-plane:
+    \[ x = 0 \quad \hat{\bb{n}} = -\hat{\bb{x}} \]
+    \[ \bb{F} \cdot \bb{n} = F_x = x = 0 \]
+    Thus, $\iint_S \bb{F} \cdot \hat{\bb{n}} dS = 0$
+
+    (b) $\bb{F} = (\vvec{x}{y}{0})\ln(x^2 + y^2)$. S, the cylinder (including the top and bottom) of radius R and height h shown
+    in the figure (centered on z-axis).
+
+    Solution:
+
+    Treat the cylinder as three surfaces, the top circle, bottom circle, and ring in the middle. The top and bottom surfaces will be the same.
+    In each case, $\hat{\bb{n}} = \pm \hat{\bb{k}}$. Thus for the top and bottom circle:
+    \[ \bb{F} \cdot \bb{n} = \bb{F} \cdot \bb{k} = E_z = 0 \]
+    \[ \implies \iint_S \bb{F} \cdot \hat{\bb{n}} dS = 0 \]
+    For the ring, we should use cylindrical coordinates where:
+    \[ z \in (0,h), \quad r = R, \quad \phi \in (0,2\pi) \]
+    \[ r^2 = x^2 + y^2 \]
+    \[ x = r\cos\phi \quad y = r\sin\phi \]
+    The difficulty is finding the unit normal vector in a useful form. In cylindrical coordinates, it is $\bh{n} = \bh{r}$, but we need this in
+    Cartesian coordinates so that we can perform the dot product. The vector $\vec{r}$ is the sum of the vectors $\vec{x}$ and $\vec{y}$:
+    \[ \vec{r} = \vec{x} + \vec{y} = x\bh{i} + y\bh{j} \]
+    \[ \implies \bh{n} = \bh{r} = \frac{\vec{r}}{|r|} = \frac{x\bh{i} + y \bh{j}}{R} \]
+    We can now perform the dot product:
+    \[ \bb{F} \cdot \bh{n} = \ln(x^2 + y^2)\frac{(F_x)(x) + (F_y)(y)}{R} = \ln(R^2)\frac{x^2 + y^2}{R} = (R^2/R)2\ln{R} = 2R\ln{R} \]
+    This is a constant since the surface is a shell and r=R, so it can be taken out of the integral, which otherwise gives the surface area of a cylinder less the two ends:
+    \[ \iint_S \bb{F} \cdot \hat{\bb{n}} dS = \int_0^{2\pi} \int_0^h (2R\ln{R}) r dz d\phi = 4\pi R^2 h \ln{R} \]
+
+    (c) $\bb{F} = (\vvec{x}{y}{z}) e^{-(x^2 + y^2 + z^2)}$. S, the surface of the sphere of radius R centered at the origin as shown in the figure.
+
+    Solution:
+
+    Similar to the previous problem but in spherical coordinates, the normal vector to the sphere's surface is:
+    \[ \bh{n} = \bh{r} = \frac{(x\bh{i} + y\bh{j} + z\bh{k})}{r} \]
+    \[\bb{F} \cdot \bh{n} = \frac{x^2 + y^2 + z^2}{r}e^{-(x^2 + y^2 + z^2)} = re^{-(r^2)} \]
+    For this spherical shell:
+    \[ r = R, \quad \theta \in (0,2\pi), \quad \phi \in (0,\pi) \]
+    The dot product will be a constant again, and the rest of the integral gives the surface area of a sphere of radius R:
+    \[ \iint_S \bb{F} \cdot \hat{\bb{n}} dS = \int_0^{2\pi} \int_0^\pi re^{-(r^2)} r^2 \sin\theta d\phi d\theta = R^3 e^{-(R^2)} \int_0^{2\pi} \int_0^\pi \sin\theta d\phi d\theta\]
+    \[ = 4 \pi R^3 e^{-(R^2)} \]
+
+    (d) $\bb{F} = \bb{i}E(x)$ where E(x) is an arbitrary scalar function of x. S, the surface of the cube of side b shown in the figure
+    (bottom corner at the origin, and the entire cube in the first octant).
+
+    Solution:
+
+    Faces with a unit normal vector of $\bh{j}$ or $\bh{k}$ will have yield a dot product with \bb{F} of zero. The nonzero faces are the two parallel
+    to the yz-plane, one of which has a +\bb{i} normal vector and the other has a -\bb{i}. Thus the surface integral is broken into two smaller surface integrals:
+    \[ \iint_S \bb{F} \cdot \hat{\bb{n}} dS = \iint_S E(x) dydz \bigg{|}_{x=b} + \iint_S -E(x) dydz \bigg{|}_{x=0} \]
+    \[ = \iint_S E(b) dydz + \iint_S -E(0) dydz \]
+    The double integral is the area of the face of the cube, which is $b^2$.
+    \[ = E(b)b^2 - E(0)b^2 \]
+    \[ = (E(b) - E(0))b^2 \]
+
+    \item (a) Use Gauss' law and symmetry to find the electrostatic field as a function of position for an
+    infinite uniform plane of charge. Let the charge lie in the yz-plane and denote the charge
+    per unit area by $\sigma$.
+
+    Solution:
+
+    \[ \iint_S \bb{E} \cdot \bb{n} dS = \frac{q}{\epsilon_0} \]
+
+    The components of the field in every direction except the $\pm \bh{x}$ direction will cancel out.
+    We will use a cylinder of radius $r = \sqrt{y^2 + z^2}$ and height x in either direction.
+    The charge q in terms of $\sigma$ is
+    \[ q = \sigma \pi r^2 \]
+    There are two surfaces we need to consider, the ends of the cylinder. The body of the cylinder has a dot product
+    with the field of zero since the field is parallel to the edge.
+    \[ \bb{E}(x) = \bb{i}E(x) \; \{x>0\} = -\bb{i}E(x) \; \{x<0\} \]
+    \[ E(x) = E(-x) \]
+    \[ \iint_S \bb{E(x)} dS = \iint_S E(x) dS + \iint_S E(-x) dS = \frac{\sigma \pi r^2}{\epsilon_0} \]
+    \[ 2 \iint_S E(x) dS = \frac{\sigma \pi r^2}{\epsilon_0} \]
+    \[ 2 E(x) \pi r^2 = \frac{\sigma \pi r^2}{\epsilon_0} \]
+    \[ E(x) = \frac{\sigma}{2\epsilon_0} \]
+    Thus, for the positive and negative x-directions:
+    \[ E(x) = \bh{i}\frac{\sigma}{2\epsilon_0}, \; x>0 \]
+    \[ E(x) = -\bh{i}\frac{\sigma}{2\epsilon_0}, \; x<0 \]
+
+    (b) Repeat part (a) for an infinite slab of charge parallel to the yz-plane, whose
+    density is given by
+
+    \begin{equation*}
+        \rho (x) =
+            \begin{cases}
+                \rho_0, \text{$-b < x < b$}, \\
+                0, \text{$|x| \geq b$},
+            \end{cases}
+    \end{equation*}
+    where $\rho_0$ and b are constants.
+
+    Solution:
+
+    Similar to part a, the components in every direction except $\pm \bh{x}$ will cancel out. Thus:
+    \[ \iint_S \bb{E(x)} dS = 2E(x)A \]
+    where we have used A as the area of the end of whatever shape we use. In part (a) we used a cylinder, but
+    we could use any shape, and the area will cancel out, so we will leave it as a general area. We have to
+    separately consider the region within the slab and the region without.
+
+    Within the slab $|x| < b$. The trick is determining the correct expression for the enclosed charge.
+    \[ q = \rho_0 \cdot volume = \rho_0 A (2x)\]
+    \[ \therefore 2E(x)A = \frac{2x\rho_0A}{\epsilon_0} \]
+    \[ E(x) = \frac{x\rho_0}{\epsilon_0}, \; -b < x < b\]
+
+    Outside the slab, $|x| > b$. The enclosed charge is:
+    \[ q = \rho_0 \cdot volume = \rho_0 A (2b) \]
+    \[ \therefore 2E(x)A = \frac{2b\rho_0A}{\epsilon_0} \]
+    \[ E(x) = \frac{b\rho_0}{\epsilon_0} \]
+
+    Thus:
+    \[ E(x) = \bh{i} \frac{x\rho_0}{\epsilon_0}, \; -b < x < b \]
+    \[ E(x) = \bh{i} \frac{b\rho_0}{\epsilon_0}, \; x > b \]
+    \[ E(x) = -\bh{i} \frac{b\rho_0}{\epsilon_0}, \; x < -b \]
+
+    (c) Repeat part (b) with $\rho(x) = \rho_0e^{-|x/b|}$.
+
+    Solution:
+
+    The charged area is the same slab, so all the same symmetry considerations abide. The enclosed charge in this case
+    is:
+    \[ q = \iiint \rho(x) dV = \iiint \rho_0 e^{-|x/b|} dV \]
+    \[ q = A\rho_0 \int_x^x e^{-|x'/b|} dx' \]
+    \[ q = A\rho_0 2 \int_0^x e^{-x'/b} dx' \]
+    \[ q = 2A\rho_0 \left[ (-b)e^{-x'/b} \right] \bigg{|}_0^x \]
+    \[ q = 2A\rho_0 [(-b)e^{-x/b} -(-b)e^{-0/b}]\]
+    \[ q = 2A\rho_0 [(-b)e^{-x/b} + b]\]
+    \[ q = 2Ab\rho_0 [1 - e^{-x/b}]\]
+    \[ \therefore 2E(x)A = \frac{2Ab\rho_0 [1 - e^{-x/b}]}{\epsilon_0} \]
+    \[ E(x) = \frac{b\rho_0 [1 - e^{-x/b}]}{\epsilon_0} \]
+    \[ \implies E(x) = \bh{i}\frac{b\rho_0 [1 - e^{-x/b}]}{\epsilon_0}, \; |x| < b \]
+    \[ \implies E(x) = -\bh{i}\frac{b\rho_0 [1 - e^{x/b}]}{\epsilon_0}, \; |x| > b \]
+
+    \item (a) Use Gauss' Law and symmetry to find the electrostatic field as a function of position for an infinite
+    line of charge. Let the charge lie along the z-axis and denote the charge per unit length by $\lambda$.
+
+    Solution:
+
+    By symmetry, the field will only point radially outward from the line of charge. The field in every other direction will
+    cancel out. We'll use a cylinder around the z-axis for the surrounding surface. The ends of the cylinder do not contribute
+    to the integral since the dot product with the field is zero. The only surface that matters is the outside of the cylinder,
+    which we can treat as a rectangle of length L. Gauss' Law is:
+    \[ \iint_S \bb{E(r)} dS = \frac{q}{\epsilon_0} \]
+    and the enclosed charge is:
+    \[ q = \lambda L \]
+    \[ \iint_S \bb{E(r)} dS = \frac{\lambda L}{\epsilon_0} \]
+    \[ E(r) (L)(2\pi r) = \frac{\lambda L}{\epsilon_0} \]
+    \[ E(r) = \frac{\lambda}{2\pi r \epsilon_0} \]
+    \[ E(r) = \frac{\lambda}{2\pi\epsilon_0} \cdot \frac{\bh{e}_r}{r} \]
+
+    (b) Repeat part (a) for an infinite cylinder of charge whose axis coincides with the z-axis and whose density is given
+    in cylindrical coordinates by
+
+    \begin{equation*}
+        \rho (r) =
+            \begin{cases}
+                \rho_0, \text{$r < x$}, \\
+                0, \text{$r \geq b$},
+            \end{cases}
+    \end{equation*}
+    where $\rho_0$ and b are constants.
+
+    Solution:
+
+    All the same symmetry considerations abide as in part (a). There are two regions that matter, inside and outside the
+    cylinder of charge. For $r < b$, the enclosed charge is:
+    \[ q = \rho_0 * volume = \rho_0 \pi r^2 L\]
+    \[ \iint_S \bb{E(r)} dS = \frac{\rho_0 \pi r^2 L}{\epsilon_0} \]
+    \[ E(r) 2 \pi rL = \frac{\rho_0 \pi r^2 L}{\epsilon_0} \]
+    \[ E(r) = \frac{\rho_0 r}{2\epsilon_0} \]
+    \[ E(r) = \frac{\rho_0 r}{2\epsilon_0} \bh{e}_r, \; r < b \]
+
+    For $r > b$, the enclosed charge is:
+    \[ q = \rho_0 \pi b^2 L \]
+    \[ \iint_S \bb{E(r)} dS = \frac{\rho_0 \pi b^2 L}{\epsilon_0} \]
+    \[ E(r) 2 \pi rL = \frac{\rho_0 \pi b^2 L}{\epsilon_0} \]
+    \[ E(r) = \frac{\rho_0 b^2}{2r\epsilon_0} \]
+    \[ E(r) = \frac{\rho_0 b^2}{2r\epsilon_0} \bh{e}_r, \; r > b \]
+
+    (c) Repeat part (b) with $\rho(r) = \rho_0 e^{-r/b}$.
+
+    Solution:
+
+    \[ \iint_S \bb{E(r)} dS = \frac{q}{\epsilon_0} \]
+    \[ q = \iiint_V \rho(r) dV = \iiint_V \rho_0 e^{(-r/b)} dV \]
+    The volume in this case is a cylinder, so we can use cylindrical coordinates:
+    \[ q = \rho_0 \int_0^L \int_0^{2\pi} \int_0^r e^{(-x/b)} xdx d\phi dz \]
+    \[ q = \rho_0 2 \pi L \int_0^r e^{(-x/b)} xdx \]
+    \centerline{TODO evaluate through integration by parts}
+    \[ q = \rho_0 2 \pi L b \left[ b - e^{-r/b}(b + r) \right] \]
+    \[ q = \rho_0 2 \pi L b^2 \left[ 1 - e^{-r/b}(1 + r/b) \right] \]
+    \[ E(r) \iint_S dS = \frac{\rho_0 2 \pi L b^2 \left[ 1 - (1 + r/b)e^{-r/b} \right]}{\epsilon_0} \]
+    \[ E(r) (2 \pi r L) = \frac{\rho_0 2 \pi L b^2 \left[ 1 - (1 + r/b)e^{-r/b} \right]}{\epsilon_0} \]
+    \[ E(r) = \frac{\rho_0}{\epsilon_0} \frac{b^2}{r} \left[ 1 - (1 + r/b)e^{-r/b} \right] \bh{e}_r\]
+
+    \item (a) Use Gauss' law and symmetry to find the electrostatic field as a function of position
+    for the spherically symmetric charge distribution whose density is given in spherical coordinates
+    by
+    \begin{equation*}
+        \rho (r) =
+            \begin{cases}
+                \rho_0, r < b, \\
+                0, r \geq b,
+            \end{cases}
+    \end{equation*}
+    where $\rho_0$ and $b$ are constants.
+
+    Solution:
+
+    For the region inside the sphere, $r < b$:
+    \[ \iint_S \bb{E(r)} dS = \frac{q}{\epsilon_0} \]
+    \[ q = \iiint_V \rho dV \]
+    \[ q = \int_0^{2 \pi} \int_0^{\pi} \int_0^r \rho_0 r^2 \sin{\theta} dr d\theta d\phi \]
+    \[ q = \frac{4}{3}\pi r^3 \rho_0 \]
+    \[ E(r) (4 \pi r^2) = \frac{4}{3 \epsilon_0}\pi r^3 \rho_0 \]
+    \[ E(r) = \frac{1}{3 \epsilon_0}r \rho_0 \bh{e}_r \quad \left(r<b\right)\]
+    For the region outside the sphere, $r \geq b$:
+    \[ q = \int_0^{2 \pi} \int_0^{\pi} \int_0^b \rho_0 r^2 \sin{\theta} dr d\theta d\phi \]
+    \[ q = \frac{4}{3} \pi b^3 \]
+    \[ E(r) (4 \pi r^2) = \frac{4}{3 \epsilon_0}\pi b^3 \rho_0 \]
+    \[ E(r) = \frac{\rho_0}{3 \epsilon_0} \frac{b^3}{r^2} \bh{e}_r \quad \left(r \geq b\right)\]
+
+    (b) Repeat part (a) for $\rho(r) = \rho_0 e^{-r/b}$.
+
+    Solution:
+
+    This distribution is not separated into regions.
+    \[ q = \int_0^{2\pi} \int_0^\pi \int_0^r \rho_0 e^{-r'/b} r'^2 \sin{\theta} dr' d\theta d\phi \]
+    \[ q = 4\pi \rho_0 \int_0^r e^{-r'/b} r'^2 dr' \]
+    \centerline{TODO - solve this through integration by parts}
+    \[ q = 4\pi \rho_0 \left[ 2b^3 - be^{-r/b}(2b^2 + 2br + r^2) \right] \]
+    \[ q = 4\pi b^3 \rho_0 \left[ 2 - be^{-r/b}(2/b + 2r/b^2 + r^2/b^3) \right] \]
+    \[ E (4 \pi r^2) = 4\pi b^3 \rho_0 /\epsilon_0 \left[ 2 - e^{-r/b}(2 + 2r/b + r^2/b^2) \right] \]
+    \[ E = \frac{b^3 \rho_0}{r^2 \epsilon_0} \left[ 2 - e^{-r/b}(2 + 2r/b + r^2/b^2) \right] \bh{e}_r \]
+
+    (c) Repeat part (a) for
+    \begin{equation*}
+        \rho(r) =
+        \begin{cases}
+            \rho_0, r < b, \\
+            \rho_1, b \leq r < 2b, \\
+            0, r \geq 2b
+        \end{cases}
+    \end{equation*}
+    How must $\rho_0$ and $\rho_1$ be related so that the field will be zero for $r > 2b$?
+    What is the total charge of this distribution under these circumstances?
+
+    Solution:
+
+    For the region $r < b$:
+    \[ q = \int_0^{\pi} \int_0^{2\pi} \int_0^r \rho_0 r^2 \sin{\theta} dr d\phi d\theta \]
+    \[ q = 4\pi r^3 \rho_0 / 3 \]
+    \[ E (4 \pi r^2) = \frac{4\pi r^3 \rho_0}{3\epsilon_0} \]
+    \[ E = \frac{r \rho_0}{3 \epsilon_0} \bh{e}_r \]
+
+    For the region $b < r \leq 2b$:
+    \[ q = \int_0^{\pi} \int_0^{2\pi} \int_0^b \rho_0 r^2 \sin{\theta} dr d\phi d\theta +
+        \int_0^{\pi} \int_0^{2\pi} \int_b^r \rho_1 r'^2 \sin{\theta} dr' d\phi d\theta \]
+    \[ q = \frac{4\pi b^3 \rho_0}{3} + \frac{4\pi \rho_1}{3} (r^3 - b^3) \]
+    \[ E (4 \pi r^2) = \frac{4\pi}{3\epsilon_0}(\rho_0 b^3 + \rho_1(r^3 - b^3)) \]
+    \[ E = \frac{1}{3\epsilon_0 r^2} (\rho_0 b^3 + \rho_1(r^3 - b^3)) \bh{e}_r \]
+
+    For the region $r > 2b$:
+    \[ q = \int_0^{\pi} \int_0^{2\pi} \int_0^b \rho_0 r^2 \sin{\theta} dr d\phi d\theta +
+        \int_0^{\pi} \int_0^{2\pi} \int_b^{2b} \rho_1 r'^2 \sin{\theta} dr' d\phi d\theta \]
+    \[ q = \frac{4\pi b^3 \rho_0}{3} + \frac{4\pi \rho_1}{3} (8b^3 - b^3) \]
+    \[ q = \frac{4\pi b^3}{3}(\rho_0 + 7\rho_1) \]
+    \[ E (4 \pi r^2) = \frac{4\pi b^3}{3 \epsilon_0}(\rho_0 + 7\rho_1) \]
+    \[ E = \frac{b^3}{3 r^2 \epsilon_0}(\rho_0 + 7\rho_1) \bh{e}_r \]
+
+    For the total field outside $r > 2b$ to be zero, the total charge inside the sphere must be zero.
+
+    \[ q = \int_0^{\pi} \int_0^{2\pi} \int_0^b \rho_0 r^2 \sin{\theta} dr d\phi d\theta +
+        \int_0^{\pi} \int_0^{2\pi} \int_b^{2b} \rho_1 r^2 \sin{\theta} dr d\phi d\theta = 0 \]
+    \[ 4\pi \rho_0 b^3 / 3 = - 4\pi \rho_1 r^3 / 3 \big{|}_b^{2b} \]
+    \[ \rho_0 b^3 = - \rho_1 (8b^3 - b^3) \]
+    \[ \rho_0 = - 7\rho_1 \]
+
+    \item Calculate the divergence of each of the following fucntinos using Equation (II-22):
+
+    (a) $\vvec{x^2}{y^2}{z^2}$
+
+    Solution:
+    \[ \textnormal{div} \bb{F} = \nabla \cdot \bb{F} = \frac{\partial{F_x}}{\partial{x}} + \frac{\partial{F_y}}{\partial{y}} + \frac{\partial{F_z}}{\partial{z}} \]
+    \[ F_x = x^2 \quad F_y = y^2 \quad F_z = z^2 \]
+    \[ \nabla \cdot \bb{F} = 2x + 2y + 2z \]
+
+    (b) $\vvec{yz}{xz}{xy}$
+
+    Solution:
+    \[ \nabla \cdot \bb{F} = 0 + 0 + 0 \]
+
+    (c) $\vvec{e^{-x}}{e^{-y}}{e^{-z}}$
+
+    Solution:
+    \[ \nabla \cdot \bb{F} = -e^{-x} - e^{-y} - e^{-z} \]
+
+    (d) $\vvec{1}{-3}{z^2}$
+
+    Solution:
+    \[ \nabla \cdot \bb{F} = 0 + 0 + 2z = 2z \]
+
+    (e) $(\vvec{(-xy)}{x^2}{0}) / (x^2 + y^2)$
+
+    Solution:
+
+    \centerline{TODO - show these derivatives}
+    \[ \nabla \cdot \bb{F} = \frac{y(x^2-y^2)}{(x^2 + y^2)^2} - \frac{2x^2y}{(x^2 + y^2)^2} \]
+    \[ \nabla \cdot \bb{F} = \frac{yx^2 - y^3 - 2x^2y}{(x^2 + y^2)^2} \]
+    \[ \nabla \cdot \bb{F} = \frac{y(-x^2 - y^2)}{(x^2 + y^2)^2} \]
+    \[ \nabla \cdot \bb{F} = \frac{-y}{(x^2 + y^2)} \]
+
+    (f) $\bb{k}\sqrt{x^2 + y^2}$
+
+    Solution:
+
+    \[ \nabla \cdot \bb{F} = 0 + 0 + \pd[]{z}{\sqrt{x^2 + y^2}} = 0 \]
+
+    (g) $\vvec{x}{y}{z}$
+
+    Solution:
+
+    \[ \nabla \cdot \bb{F} = \pd[]{x}{x} + \pd[]{y}{y} + \pd[]{z}{z} \]
+    \[ \nabla \cdot \bb{F} = 1 + 1 + 1 = 3\]
+
+    (h) $\vvec{(-y)}{x}{0}/\sqrt{x^2 + y^2}$
+
+    Solution:
+    \[ \nabla \cdot \bb{F} = -y(-1/2)(x^2 + y^2)^{-3/2}(2x) + x(-1/2)(x^2 + y^2)^{-3/2}(2y) \]
+    \[ \nabla \cdot \bb{F} = \frac{xy}{(x^2 + y^2)^{-3/2}} + \frac{-xy}{(x^2 + y^2)^{-3/2}} \]
+    \[ \nabla \cdot \bb{F} = 0 \]
+
+    \item (a) Calculate $\iint_S \bb{F} \cdot \bh{n} dS$ for the function in Problem II-14(a)
+    over the surface of a cube of side s whose center is at $(x_0, y_0, z_0)$ and whose faces
+    are parallel to the coordinate planes.
+
+    Solution:
+
+    % We use the divergence theorem.
+    % \[ \iint_S \bb{F} \cdot \bh{n} dS = \iiint_V \nabla \cdot \bb{F} dV \]
+    From the previous problem, we have:
+    \[ \nabla \cdot \bb{F} = 2x + 2y + 2z \]
+    \[ \bb{F} = x^2 + y^2 + z^2 \]
+    The surface is the sides of the cube. There are six sides, such that:
+    \[ \bb{F} \cdot \bh{i} = F_x = (x_0 + s/2)^2 \]
+    \[ \bb{F} \cdot -\bh{i} = -F_x = -(x_0 - s/2)^2 \]
+    \[ \bb{F} \cdot \bh{j} = F_y = (y_0 + s/2)^2 \]
+    \[ \bb{F} \cdot -\bh{j} = -F_y = -(y_0 - s/2)^2 \]
+    \[ \bb{F} \cdot \bh{k} = F_z = (z_0 + s/2)^2 \]
+    \[ \bb{F} \cdot -\bh{k} = -F_z = -(z_0 - s/2)^2 \]
+    and the area of each surface is $s^2$.
+    \[ \iint_S \bb{F} \cdot \bh{n} dS = s^2[(x_0 + s/2)^2 -(x_0 - s/2)^2] + (\textnormal{similar terms in y and z}) \]
+    \[ \iint_S \bb{F} \cdot \bh{n} dS = s^2[(x_0^2 + sx_0 + s^2/4) -(x_0^2 - sx_0 + s^2/4)] + (\textnormal{similar terms in y and z}) \]
+    \[ \iint_S \bb{F} \cdot \bh{n} dS = s^2(2sx_0) + (\textnormal{similar terms in y and z}) \]
+    \[ \iint_S \bb{F} \cdot \bh{n} dS = 2s^3x_0 + (\textnormal{similar terms in y and z}) \]
+    \[ \iint_S \bb{F} \cdot \bh{n} dS = 2s^3(x_0 + y_0 + z_0) \]
+
+    (b) Divide the above result by the volume of the cube and calculate the limit of the quotient
+     as $s \rightarrow 0$. Compare your result with the divergence found in Problem II-14(a).
+
+    Solution:
+
+    The volume is $V = s^3$. Thus:
+    \[ \lim_{s\to 0} \frac{1}{\Delta V} \iint_S \bb{F} \cdot \bh{n} dS = \frac{1}{s^3} 2s^3(x_0 + y_0 + z_0) \]
+    \[ = 2(x_0 + y_0 + z_0) \]
+    The divergence from II-14(a) is:
+    \[ \nabla \cdot \bb{F} = 2x + 2y + 2z = 2(x_0 + y_0 + z_0) \]
+
+    (c) Repeat parts (a) and (b) for the function of Problem II-14(b) and (c).
+
+    Solution:
+
+    from II-14(b)
+    \[ \bb{F} = \vvec{yz}{xz}{xy} \]
+    \[ \bb{F} \cdot \bh{i} = F_x = y_0 z_0 \]
+    \[ \bb{F} \cdot -\bh{i} = -F_x = -y_0 z_0 \]
+    \centerline{Similar terms for $F_y$ and $F_z$}
+    \[ \iint_S \bb{F} \cdot \bh{n} dS = s^2[\bb{F} \cdot \bh{i} + \bb{F} \cdot -\bh{i} + \bb{F} \cdot \bh{j} + \bb{F} \cdot -\bh{j} + \bb{F} \cdot \bh{k} + \bb{F} \cdot -\bh{k}] \]
+    \[ = s^2[ y_0 z_0 - y_0 z_0 + x_0 z_0 - x_0 z_0 + x_0 y_0 - x_0 y_0] \]
+    \[ = 0 \]
+    \[ \implies \frac{1}{\Delta V} \iint_S \bb{F} \cdot \bh{n} dS = 0 \]
+
+    from II-14(c)
+    \[ \bb{F} = \vvec{e^{-x}}{e^{-y}}{e^{-z}} \]
+    \[ \bb{F} \cdot \bh{i} = F_x = e^{-(x_0 + s/2)} = e^{-x_0}e^{-s/2} \]
+    \[ \bb{F} \cdot -\bh{i} = -F_x = -e^{-(x_0 - s/2)} = -e^{-x_0}e^{s/2} \]
+    \[ \iint_S \bb{F} \cdot \bh{n} dS = s^2[(e^{-s/2} - e^{s/2})(e^{-x_0} + e^{-y_0} + e^{-z_0})] \]
+    \[ \lim_{s\to 0} \frac{1}{\Delta V} \iint_S \bb{F} \cdot \bh{n} dS = \frac{1}{s^3}s^2[(e^{-s/2} - e^{s/2})(e^{-x_0} + e^{-y_0} + e^{-z_0})] \]
+    \centerline{Use L'Hopital's rule}
+    \[ \lim_{s\to 0} \frac{(e^{-s/2} - e^{s/2})}{s} = \lim_{s\to 0} \frac{(-1/2)e^{-s/2} - (1/2)e^{s/2}}{1} \]
+    \[ \lim_{s\to 0} \frac{(e^{-s/2} - e^{s/2})}{s} = (1/2)[-(1) - (1)] = -1 \]
+    \[ \implies \lim_{s\to 0} \frac{1}{\Delta V} \iint_S \bb{F} \cdot \bh{n} dS = (-1)(e^{-x_0} + e^{-y_0} + e^{-z_0}) \]
+    \[ = e^{-x_0} - e^{-y_0} - e^{-z_0} \]
 \end{enumerate}
 
 \end{document}

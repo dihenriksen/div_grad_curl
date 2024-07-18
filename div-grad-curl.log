@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.17)  4 JUL 2024 13:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.17)  18 JUL 2024 14:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -89,7 +89,16 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (/usr/local/texlive/2024basic/texmf-dist/tex/latex/geometry/geometry.sty
+) (/usr/local/texlive/2024basic/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/local/texlive/2024basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/local/texlive/2024basic/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
@@ -120,28 +129,28 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 ) (./div-grad-curl.aux)
 \openout1 = `div-grad-curl.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Info: Redefining \celsius on input line 11.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Info: Redefining \celsius on input line 12.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 12.
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 11.
-Package gensymb Info: Using \Omega for \ohm on input line 11.
+LaTeX Info: Redefining \ohm on input line 12.
+Package gensymb Info: Using \Omega for \ohm on input line 12.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -179,8 +188,15 @@ Package gensymb Warning: Not defining \micro.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 46--55
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+(/usr/local/texlive/2024basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+ (/usr/local/texlive/2024basic/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 51--60
 
  []
 
@@ -209,14 +225,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--55
 [10]
 
 [11]
-Overfull \hbox (8.95601pt too wide) detected at line 491
+Overfull \hbox (8.95601pt too wide) detected at line 497
 [] [][] [] \OMS/cmsy/m/n/10 ^^A []\OML/cmm/m/it/10 dxdy \OT1/cmr/m/n/10 = [] [][] [] \OMS/cmsy/m/n/10 ^^A []\OML/cmm/m/it/10 dxdy
  []
 
 
 
 [12]
-Overfull \hbox (7.85883pt too wide) detected at line 520
+Overfull \hbox (7.85883pt too wide) detected at line 526
 [] [][] [] \OMS/cmsy/m/n/10 ^^A []\OML/cmm/m/it/10 dxdy \OT1/cmr/m/n/10 = [] [][] [] \OMS/cmsy/m/n/10 ^^A []\OML/cmm/m/it/10 dxdy
  []
 
@@ -237,7 +253,7 @@ Overfull \hbox (7.85883pt too wide) detected at line 520
 [19]
 
 [20]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 827--829
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 833--835
 [] 
  []
 
@@ -245,25 +261,65 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 827--829
 
 [21]
 
-[22] (./div-grad-curl.aux)
+[22]
+
+[23]
+
+[24]
+
+[25]
+
+[26]
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 1039--1041
+[] 
+ []
+
+
+
+[27]
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 1080--1082
+[] 
+ []
+
+
+
+[28]
+
+[29]
+
+[30]
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 1227--1229
+[] 
+ []
+
+
+
+[31]
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 1239--1241
+[] 
+ []
+
+
+
+[32] (./div-grad-curl.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 1
 L3 programming layer <2024-05-27>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1896 strings out of 475051
- 29519 string characters out of 5762909
+ 2433 strings out of 475051
+ 35798 string characters out of 5762909
  1947905 words of memory out of 5000000
- 24585 multiletter control sequences out of 15000+600000
- 565450 words of font info for 61 fonts, out of 8000000 for 9000
+ 25103 multiletter control sequences out of 15000+600000
+ 567930 words of font info for 73 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  57i,21n,65p,373b,291s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </Users/dihenriksen/Library/texlive/2024basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on div-grad-curl.pdf (22 pages, 230171 bytes).
+ </Users/dihenriksen/Library/texlive/2024basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on div-grad-curl.pdf (32 pages, 279373 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
+ 198 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
