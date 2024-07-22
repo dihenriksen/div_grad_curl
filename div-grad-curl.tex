@@ -1242,6 +1242,69 @@ This is a work in progress. I am using it to learn LaTeX and vector calculus at 
     \[ \lim_{s\to 0} \frac{(e^{-s/2} - e^{s/2})}{s} = (1/2)[-(1) - (1)] = -1 \]
     \[ \implies \lim_{s\to 0} \frac{1}{\Delta V} \iint_S \bb{F} \cdot \bh{n} dS = (-1)(e^{-x_0} + e^{-y_0} + e^{-z_0}) \]
     \[ = e^{-x_0} - e^{-y_0} - e^{-z_0} \]
+
+    \item (a) Calculate the divergence of the function
+    \[ \bb{F}(x,y,z) = \vvec{f(x)}{f(y)}{f(-2z)} \]
+    and show that it is zero at the point $(c,c,-c/2)$.
+
+    Solution:
+
+    The divergence is:
+    \[ \nabla \cdot \bb{F} = \pd[F_x]{x} + \pd[F_y]{y} + \pd[F_z]{z}\]
+    \[ \nabla \cdot \bb{F} = f'(x) + f'(y) + -2f'(-2z) \]
+    \[ = f'(x) + f'(y) + -2f'(-2z) \]
+    \[ = f'(c) + f'(c) + -2f'(-2(-c/2)) \]
+    \[ = f'(c) + f'(c) + -2f'(c) = 0 \]
+
+    (b) Calculate the divergence of
+    \[ \bb{G}(x,y,z) = \vvec{f(y,z)}{g(x,z)}{h(x,y)}\]
+
+    Solution:
+
+    \[ \nabla \cdot \bb{F} = \pd[F_x]{x} + \pd[F_y]{y} + \pd[F_z]{z}\]
+    \[\pd[F_x]{x} = \pd[f(y,z)]{x} = 0 \]
+    \[\pd[F_y]{y} = \pd[g(x,z)]{y} = 0 \]
+    \[\pd[F_z]{z} = \pd[h(x,y)]{z} = 0 \]
+    \[ \implies \nabla \cdot \bb{F} = 0 \]
+
+    \item In the text we obtained the result
+    \[ \nabla \cdot \bb{F} = \pd[F_x]{x} + \pd[F_y]{y} + \pd[F_z]{z}\]
+    by integrating the surface of a small rectangular parallelepiped.
+    As an example of the fact that this result is independent of the usrface, rederive it
+    using the wedge-shaped surface shown in the figure.
+
+    Solution:
+
+    We need to evaluate the surface integral of F:
+    \[ \iint_s \bb{F} \cdot \bh{n} dS \]
+    on each of the five surfaces of the wedge. The two surfaces parallel to the xy-plane
+    and the xz-plane are identical to derivations in the text:
+    \[ \iint_{S1} F_y \cdot -\bh{j} dS = F_y(x, y - \frac{\Delta y}{2}, z) \Delta x \Delta z \]
+    \[ \iint_{S2} F_z \cdot -\bh{k} dS = F_z(x, y, z - \frac{\Delta z}{2}) \Delta x \Delta y \]
+    For the two opposite triangular sides:
+    \[ \iint_{S3 + S4} F_x \cdot \bh{n} dS = \iint_{S3} F_x \cdot \bh{i} dS + \iint_{S4} F_x \cdot -\bh{i} dS \]
+    \[ = F_x(x + \frac{\Delta x}{2}, y, z) \frac{\Delta y \Delta z}{2} - F_x(x - \frac{\Delta x}{2}, y, z) \frac{\Delta y \Delta z}{2} \]
+    The trick with the slanted side is to get the normal unit vector correct:
+    \[ \bh{n} = \frac{\bh{j} \Delta z}{\sqrt{\Delta y^2 + \Delta z^2}} + \frac{\bh{k} \Delta y}{\sqrt{\Delta y^2 + \Delta z^2}} \]
+    For this side, we evaluate the function F at the point (x,y,z) exactly without adding any $\Delta$s.
+    \[ \iint_{S5} F(x,y,z) \cdot \bh{n} dS = \iint_{S5} \left( F_y \frac{\bh{j} \Delta z}{\sqrt{\Delta y^2 + \Delta z^2}} + F_z \frac{\bh{k} \Delta y}{\sqrt{\Delta y^2 + \Delta z^2}} \right) dS \]
+    \[ = \frac{\Delta z}{\sqrt{\Delta y^2 + \Delta z^2}} \iint_{S5} F_y \bh{j} dS + \frac{\Delta y}{\sqrt{\Delta y^2 + \Delta z^2}} \iint_{S5} F_z \bh{k} dS \]
+    \[ = \frac{\Delta z}{\sqrt{\Delta y^2 + \Delta z^2}} F_y(x,y,z) \Delta x \sqrt{\Delta z ^2 + \Delta y ^2}  + \frac{\Delta y}{\sqrt{\Delta y^2 + \Delta z^2}} F_z(x,y,z) \Delta x \sqrt{\Delta z ^2 + \Delta y ^2} \]
+    The volume of the wedge is
+    \[ \Delta V = \frac{\Delta x \Delta y \Delta z}{2}\]
+    Adding the surface integrals of all the sides together, and dividing by $\Delta V$:
+    \[ \frac{1}{\Delta V} \iint_S \bb{F} \cdot \bh{n} dS = \frac{1}{\frac{1}{2} \Delta x \Delta y \Delta z} \left[ F_x(x + \frac{\Delta x}{2}, y, z) \frac{\Delta y \Delta z}{2} - F_x(x - \frac{\Delta x}{2}, y, z) \frac{\Delta y \Delta z}{2} + \right. \]
+    \[ \left. F_y(x, y - \frac{\Delta y}{2}, z) \Delta x \Delta z + F_z(x, y, z - \frac{\Delta z}{2}) \Delta x \Delta y  + \right. \]
+    \[ \left. \frac{\Delta z}{\sqrt{\Delta y^2 + \Delta z^2}}F_y(x,y,z) \Delta x \sqrt{\Delta z ^2 + \Delta y ^2}  + \frac{\Delta y}{\sqrt{\Delta y^2 + \Delta z^2}} F_z(x,y,z) \Delta x \sqrt{\Delta z ^2 + \Delta y ^2} \right] \]
+
+    \[ \frac{1}{\Delta V} \iint_S \bb{F} \cdot \bh{n} dS = \frac{1}{\frac{1}{2} \Delta x \Delta y \Delta z} \left[ \left( F_x(x + \frac{\Delta x}{2}, y, z) - F_x(x - \frac{\Delta x}{2}, y, z) \right) \frac{\Delta y \Delta z}{2} + \right. \]
+    \[ \left. \left( F_y(x, y - \frac{\Delta y}{2}, z) + F_y(x,y,z) \right) \Delta x \Delta z + \right. \]
+    \[ \left. \left( F_z(x, y, z - \frac{\Delta z}{2}) + F_z(x,y,z) \right) \Delta x \Delta y \right] \]
+
+    \[ \frac{1}{\Delta V} \iint_S \bb{F} \cdot \bh{n} dS = \frac{\left( F_x(x + \frac{\Delta x}{2}, y, z) - F_x(x - \frac{\Delta x}{2}, y, z) \right)}{\Delta x} + \]
+    \[ \frac{\left( F_y(x, y - \frac{\Delta y}{2}, z) + F_y(x,y,z) \right)}{\frac{\Delta y}{2}} + \frac{\left( F_z(x, y, z - \frac{\Delta z}{2}) + F_z(x,y,z) \right)}{\frac{\Delta z}{2}} \]
+
+    \[\iint_S \bb{F} \cdot \bh{n} dS = \pd[F_x]{x} + \pd[F_y]{y} + \pd[F_z]{z}\]
 \end{enumerate}
 
 \end{document}

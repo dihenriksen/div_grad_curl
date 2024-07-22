@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1721328784.66246 "/Users/dihenriksen/projects/physics/div_grad_curl/div-grad-curl.tex" "div-grad-curl.pdf" "div-grad-curl" 1721328785.01631 0
+["pdflatex"] 1721667964.92775 "/Users/dihenriksen/projects/physics/div_grad_curl/div-grad-curl.tex" "div-grad-curl.pdf" "div-grad-curl" 1721667965.32097 0
   "/Users/dihenriksen/Library/texlive/2024basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1718670587.89969 11524 61d99640ed4057266bcf130064e62727 ""
-  "/Users/dihenriksen/projects/physics/div_grad_curl/div-grad-curl.tex" 1721328784.46666 63532 b466ec127f84be00a51488aa4c1d1dcb ""
+  "/Users/dihenriksen/projects/physics/div_grad_curl/div-grad-curl.tex" 1721667964.49373 67986 143af6d9cd467d23b6c6b50dd29a0dbd ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -67,8 +67,8 @@
   "/usr/local/texlive/2024basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1718668799 79187 3707ba1a1c2304ab6bb6cb291e5e6f79 ""
   "/usr/local/texlive/2024basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1718668834 7553116 cf2457d940472f107183b61ef093d830 ""
   "/usr/local/texlive/2024basic/texmf.cnf" 1710011638 628 8b896f7d9d41b43f4346b9091e52171f ""
-  "div-grad-curl.aux" 1721328784.96615 375 f9b22bd7fabf542570e2419153c18ec1 "pdflatex"
-  "div-grad-curl.tex" 1721328784.46666 63532 b466ec127f84be00a51488aa4c1d1dcb ""
+  "div-grad-curl.aux" 1721667965.26877 375 c8f090082f6c1f4365c99d0a167ccb71 "pdflatex"
+  "div-grad-curl.tex" 1721667964.49373 67986 143af6d9cd467d23b6c6b50dd29a0dbd ""
   (generated)
   "div-grad-curl.aux"
   "div-grad-curl.log"
